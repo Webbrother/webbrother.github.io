@@ -10,6 +10,23 @@
     />
     <meta name="author" content="Vitaliy Komarov" />
     <meta name="theme-color" content="#ffffff" />
+    <script>
+      // Sets the theme before the first paint: the reader's own choice if they made one, otherwise
+      // what their system asks for. src/theme/ThemeProvider.tsx makes the same choice and takes over.
+      (function () {
+        var theme = null;
+        try {
+          theme = localStorage.getItem('webbrother:theme');
+        } catch (error) {
+          // Storage is unavailable: follow the system.
+        }
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+        if (theme === 'dark') document.querySelector('meta[name="theme-color"]').content = '#0c1218';
+      })();
+    </script>
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -27,8 +44,8 @@
       gtag('js', new Date());
       gtag('config', 'G-CN51MRQEJQ');
     </script>
-    <script type="module" crossorigin src="/assets/index-DOBq8x1L.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BkVo9L5z.css">
+    <script type="module" crossorigin src="/assets/index-CJJUUjOt.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Fvyq-T-6.css">
   </head>
   <body>
     <noscript>This site needs JavaScript. Сайту нужен JavaScript.</noscript>
